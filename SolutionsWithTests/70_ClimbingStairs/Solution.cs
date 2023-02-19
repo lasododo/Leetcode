@@ -14,7 +14,7 @@ namespace SolutionsWithTests.ClimbingStairs
     /// </summary>
     public class Solution
     {
-        public static int ClimbStairs(int n)
+        public int ClimbStairs(int n)
         {
             if (n < 4)
             {
