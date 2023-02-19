@@ -11,36 +11,28 @@ namespace SolutionsWithTests.FindPivotIndex
     {
         public int FindMiddleIndex(int[] nums)
         {
-            if (nums == null || nums.Length == 0)
+            int sum = 0;
+            int leftSum = 0;
+
+            for (int i = 0; i < nums.Length; ++i)
             {
-                return -1;
+                sum += nums[i];
             }
 
-            var leftArr = new int[nums.Length];
-            var rightArr = new int[nums.Length];
-            var len = nums.Length - 1;
+            // 1 2 3 2 1
+            // sum -> 9
+            // 0 == 9 - 0 - 1
+            // 1 == 9 - 1 - 2
+            // 3 == 9 - 3 - 3
 
-            for (int i = 0; i < nums.Length; i++)
+            for (int i = 0; i < nums.Length; ++i)
             {
-                if (i == 0)
-                {
-                    leftArr[0] = nums[0];
-                    rightArr[len] = nums[len];
-                    continue;
-                }
-                
-                leftArr[i] = nums[i] + leftArr[i - 1];
-                rightArr[len - i] = nums[len - i] + rightArr[(len - i) + 1];
-            }
-
-            for (int i = 0; i < nums.Length; i++)
-            {
-                if (leftArr[i] == rightArr[len - i])
+                if (leftSum == sum - leftSum - nums[i])
                 {
                     return i;
                 }
+                leftSum += nums[i];
             }
-
             return -1;
         }
     }
