@@ -21,6 +21,22 @@ namespace SolutionsWithTests.LongestPalindrome
 
                 dict[c] += 1;
             }
+
+            bool addOddOne = true;
+            var sum = 0;
+
+            foreach (var item in dict.Values)
+            {
+                if (item % 2 == 1 && addOddOne)
+                {
+                    sum += 1;
+                    addOddOne = false;
+                }
+
+                sum += item - (item % 2);
+            }
+
+            return sum;
         }
     }
 }
