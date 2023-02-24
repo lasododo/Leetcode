@@ -37,7 +37,7 @@ namespace SolutionsWithTests.SymmetricTree
                 return false;
             }
 
-            return IsSymmetric(left.left, right.left) && IsSymmetric(left.left, right.left);
+            return IsSymmetric(left.left, right.right) && IsSymmetric(left.right, right.left);
         }
     }
 }
