@@ -62,7 +62,6 @@ namespace SolutionsWithTests.MinimizeDeviationInArray
             {
                 var itemCopy = item;
 
-                // make odd or '2'
                 while (itemCopy % 2 != 1)
                 {
                     if (itemCopy == 2)
@@ -86,13 +85,6 @@ namespace SolutionsWithTests.MinimizeDeviationInArray
             {
                 return nums[0];
             }
-
-            /*
-             * Notes for self: with minimal set, the only edge case for me is the '2'.
-             * Therefore, I can multiply the values until I reach the minimal output
-             * 
-             * Additional Edge Case -> '2' multipliers ... we cannot go against a certain trashhold
-             */
 
             var changeOccured = true;
 
@@ -126,13 +118,11 @@ namespace SolutionsWithTests.MinimizeDeviationInArray
 
                     var isPowerOfTwo = item.Item2 == 2;
 
-                    // 2 can be multiplied multiple times
                     if (isPowerOfTwo && maxTwoPowerResult >= newItem * 2)
                     {
                         newItem *= 2;
                     }
 
-                    // odd numbers can be multiplied just once
                     if (!isPowerOfTwo && newItem % 2 == 1)
                     {
                         newItem *= 2;

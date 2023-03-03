@@ -272,6 +272,48 @@ namespace SolutionsWithTests.MedianofTwoSortedArrays
         }
 
         [Test, Timeout(100)]
+        public void Test4()
+        {
+            var array1 = new int[] { 1 };
+            var array2 = new int[] { 2, 3, 4, 5, 6, 7 };
+            double expected = GetExpectedFromArray(array1, array2);
+
+            var result = new Solution()
+                .FindMedianSortedArrays(array1, array2);
+
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
+        [Test, Timeout(100)]
+        public void Test5()
+        {
+            var array1 = new int[] { 4 };
+            var array2 = new int[] { 1, 2, 3, 5, 6, 7 };
+            double expected = GetExpectedFromArray(array1, array2);
+
+            var result = new Solution()
+                .FindMedianSortedArrays(array1, array2);
+
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
+        [Test, Timeout(100)]
+        public void TestLoop()
+        {
+            for (int i = -10; i < 10; i++)
+            {
+                var array1 = new int[] { i };
+                var array2 = Enumerable.Range(i, 11 - i).Where(a => a != i).ToArray();
+                double expected = GetExpectedFromArray(array1, array2);
+
+                var result = new Solution()
+                    .FindMedianSortedArrays(array1, array2);
+
+                Assert.That(result, Is.EqualTo(expected));
+            }
+        }
+
+        [Test, Timeout(100)]
         public void TestOddLengthSingleEmpty1()
         {
             var array1 = new int[] { 1, 2, 3, 4, 5, 6, 7 };
